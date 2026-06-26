@@ -101,3 +101,23 @@ button:hover {
   background: #F3C3D8;
   transform: translateY(-2px);
 }
+
+.habit-button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  text-align: left;
+
+  padding: 18px 22px;
+
+  font-size: 1.2rem;
+
+  gap: 12px;
+}
+
+.habit-button:hover {
+  background: #F3C3D8;
+}
