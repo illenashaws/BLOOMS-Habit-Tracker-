@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+# 🌸 BLOOMS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BLOOMS is a personal habit tracker and mood journal I built for myself and my two younger sisters.
 
-Currently, two official plugins are available:
+During their school break, I wanted a simple habit tracker that reflected our real routines instead of forcing everyone into the same checklist. Each profile has its own habits, mood tracking, and progress system based on the person's daily goals and lifestyle.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+What started as a small project for my family became a way for me to learn React, TypeScript, state management, local storage, and user-centered design.
 
-## React Compiler
+## Current Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 👤 Personalized Profiles
 
-## Expanding the ESLint configuration
+- 💻 Elena (It's Me!)
+- 🌷 Ara
+- 🎀 Fio
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Each profile has its own:
+- Habit checklist
+- Progress tracking
+- Mood tracking
+- Personal mood notes
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### ✅ Habit Tracking
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Track daily habits and monitor completion progress.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 😊 Mood Journal
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Log daily emotions and add personal notes.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 💾 Local Storage
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Data is automatically saved in the browser.
+
+## Why I Built This
+
+My sisters and I have different schedules, goals, and personalities.
+
+Rather than using a generic habit-tracking app, I wanted to create something tailored to each person, making it easier and more enjoyable to build healthy habits together.
+
+## Built With
+
+- React
+- TypeScript
+- Vite
+- CSS
+
+## Future Features
+
+- 🔥 Streak tracking
+- 📊 Weekly statistics
+- 📅 Mood history
+- 🏆 Reward system
+- 📈 Progress dashboard
+
+## Author
+
+Created by Elena Shabra (@illenashaws)
