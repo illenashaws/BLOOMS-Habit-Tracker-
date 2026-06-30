@@ -24,20 +24,16 @@ h1 {
 
 .profile-card {
   background: white;
-
   padding: 30px;
-
   border-radius: 24px;
-
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.08);
 
   display: flex;
   flex-direction: column;
-
   gap: 12px;
 
-  min-width: 280px;
+  width: min(900px, 95vw);
 }
 
 .profile-card h2 {
@@ -60,40 +56,25 @@ h1 {
 
 button {
   border: none;
-
   border-radius: 14px;
-
   padding: 14px;
-
   font-size: 1rem;
-
   font-family: 'Nunito', sans-serif;
-
   font-weight: 700;
-
   color: #5C4A4A;
-
   background: #F8D7E5;
-
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
 textarea {
   width: 100%;
   min-height: 80px;
-
   border: none;
-
   border-radius: 14px;
-
   padding: 12px;
-
   font-family: 'Nunito', sans-serif;
-
   resize: none;
-
   background: #FFF5F8;
 }
 
@@ -103,21 +84,99 @@ button:hover {
 }
 
 .habit-button {
-  width: 100%;
-
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 
   text-align: left;
-
   padding: 18px 22px;
-
   font-size: 1.2rem;
-
   gap: 12px;
 }
 
 .habit-button:hover {
   background: #F3C3D8;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 18px;
+
+  background: #F8E7EE;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #EC6F9E, #F7A8C4);
+
+  transition: width 0.4s ease;
+  border-radius: 999px;
+}
+
+.progress-percent {
+  font-weight: 700;
+  color: #EC6F9E;
+  margin-top: 8px;
+}
+
+.habit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.mood-card {
+  width: 100%;
+  min-height: 120px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 18px;
+  border: none;
+  border-radius: 22px;
+  background: #F8D7E5;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-sizing: border-box;
+}
+
+.mood-card:hover {
+  background: #F3C3D8;
+  transform: translateY(-3px);
+}
+
+.mood-emoji {
+  font-size: 2rem;
+}
+
+.mood-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #5C4A4A;
+}
+
+.mood-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  font-size: 1.1rem;
 }

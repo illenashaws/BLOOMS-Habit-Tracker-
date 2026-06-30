@@ -208,6 +208,9 @@ function App() {
   }
 
   if (selectedUser) {
+    const completed = completedHabits[selectedUser].length
+    const total = habits[selectedUser].length
+    const percentage = Math.round((completed / total) * 100)
     return (
       <div className="app">
         <h1>🌸 BLOOMS</h1>
@@ -217,12 +220,20 @@ function App() {
         </h2>
 
         <p className="progress-text">
-          {
-            completedHabits[selectedUser]
-              .length
-          }{' '}
-          / {habits[selectedUser].length}{' '}
-          Completed
+          🌸 {completed} / {total} Completed
+        </p>
+
+        <div className="progress-bar">
+          <div
+            className="progress-fill"
+            style={{
+              width: `${percentage}%`
+            }}
+          ></div>
+        </div>
+
+        <p className="progress-percent">
+          {percentage}% Complete
         </p>
 
         <p className="progress-text">
@@ -243,42 +254,53 @@ function App() {
         </button>
 
         <div className="profile-card">
-          {habits[selectedUser].map(
-            (habit) => (
+          <div className="habit-grid">
+             {habits[selectedUser].map((habit) => (
               <button
-                className="habit-button"
-                key={habit}
-                onClick={() => toggleHabit(habit)}
-              >
-                {completedHabits[
-                  selectedUser
-                ].includes(habit)
+               className="habit-button"
+               key={habit}
+               onClick={() => toggleHabit(habit)}
+             >
+               {completedHabits[selectedUser].includes(habit)
                   ? '☑'
-                  : '☐'}{' '}
-                {habit}
-              </button>
-            )
-          )}
-        </div>
+                   : '☐'}{' '}
+                  {habit}
+                </button>
+              ))}
+            </div>
+          </div>
 
         <div className="profile-card">
           <h2>
             How are you feeling today?
           </h2>
 
-          {moods.map((mood) => (
-            <button
-              key={mood}
-              onClick={() =>
-                setSelectedMood({
-                  ...selectedMood,
-                  [selectedUser]: mood
-                })
-              }
-            >
-              {mood}
-            </button>
-          ))}
+          <div className="mood-grid">
+            {moods.map((mood) => {
+              const [emoji, label] = mood.split(' ')
+
+              return (
+                <button
+                  className="mood-card"
+                  key={mood}
+                  onClick={() =>
+                    setSelectedMood({
+                      ...selectedMood,
+                      [selectedUser]: mood
+                    })
+                  }
+                >
+                  <span className="mood-emoji">
+                    {emoji}
+                  </span>
+
+                  <span className="mood-label">
+                    {label}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
 
           <textarea
             placeholder="Mood note (optional)..."
