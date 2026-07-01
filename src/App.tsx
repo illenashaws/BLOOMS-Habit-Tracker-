@@ -85,6 +85,12 @@ type StreakData = {
   Fio: number
 }
 
+type DateData = {
+  Elena: string
+  Ara: string
+  Fio: string
+}
+
 function App() {
   const [selectedUser, setSelectedUser] =
     useState<User | ''>('')
@@ -153,6 +159,22 @@ function App() {
       }
     })
 
+   const [lastOpenedDate, setLastOpenedDate] =
+     useState<DateData>(() => {
+    const saved =
+      localStorage.getItem('blooms-date')
+
+    if (saved) {
+      return JSON.parse(saved)
+    }
+
+    return {
+      Elena: '',
+      Ara: '',
+      Fio: ''
+    }
+  })
+
   useEffect(() => {
     localStorage.setItem(
       'blooms-progress',
@@ -180,6 +202,13 @@ function App() {
       JSON.stringify(streaks)
     )
   }, [streaks])
+
+  useEffect(() => {
+  localStorage.setItem(
+    'blooms-date',
+    JSON.stringify(lastOpenedDate)
+  )
+}, [lastOpenedDate])
 
   const toggleHabit = (habit: string) => {
     if (!selectedUser) return
@@ -211,17 +240,28 @@ function App() {
     const completed = completedHabits[selectedUser].length
     const total = habits[selectedUser].length
     const percentage = Math.round((completed / total) * 100)
+    const today = new Date().toISOString().split('T')[0]
     return (
+
       <div className="app">
         <h1>🌸 BLOOMS</h1>
 
-        <h2 className="welcome-text">
-          Welcome, {selectedUser}!
-        </h2>
+      <h2 className="welcome-text">
+           Welcome, {selectedUser}!
+      </h2>
 
-        <p className="progress-text">
-          🌸 {completed} / {total} Completed
-        </p>
+      <p className="progress-text">
+        📅 Today: {today}
+      </p>
+
+      <p className="progress-text">
+        💾 Saved:
+        {lastOpenedDate[selectedUser] || 'None'}
+      </p>
+
+      <p className="progress-text">
+        🌸 {completed} / {total} Completed
+      </p>
 
         <div className="progress-bar">
           <div
@@ -255,17 +295,17 @@ function App() {
 
         <div className="profile-card">
           <div className="habit-grid">
-             {habits[selectedUser].map((habit) => (
-              <button
-               className="habit-button"
-               key={habit}
-               onClick={() => toggleHabit(habit)}
+           {habits[selectedUser].map((habit) => (
+          <button
+            className="habit-button"
+            key={habit}
+           onClick={() => toggleHabit(habit)}
              >
-               {completedHabits[selectedUser].includes(habit)
-                  ? '☑'
-                   : '☐'}{' '}
-                  {habit}
-                </button>
+           {completedHabits[selectedUser].includes(habit)
+            ? '☑'
+            : '☐'}{' '}
+           {habit}
+          </button>
               ))}
             </div>
           </div>
@@ -279,17 +319,16 @@ function App() {
             {moods.map((mood) => {
               const [emoji, label] = mood.split(' ')
 
-              return (
-                <button
-                  className="mood-card"
-                  key={mood}
-                  onClick={() =>
-                    setSelectedMood({
-                      ...selectedMood,
-                      [selectedUser]: mood
-                    })
-                  }
-                >
+        return (
+          <button
+           className="mood-card"
+           key={mood}
+           onClick={() =>
+           setSelectedMood({
+            ...selectedMood,
+           [selectedUser]: mood  })
+            }
+        >
                   <span className="mood-emoji">
                     {emoji}
                   </span>
